@@ -29,6 +29,27 @@ SECTIONS
 		_etext = .;
 	} >ROM
 
+	.preinit_array :
+	{
+		PROVIDE_HIDDEN(__preinit_array_start = .);
+		KEEP(*(.preinit_array*))
+		PROVIDE_HIDDEN(__preinit_array_end = .);
+	} >ROM
+
+	.init_array :
+	{
+		PROVIDE_HIDDEN(__init_array_start = .);
+		KEEP(*(.init_array*))
+		PROVIDE_HIDDEN(__init_array_end = .);
+	} >ROM
+
+	.fini_array :
+	{
+		PROVIDE_HIDDEN(__fini_array_start = .);
+		KEEP(*(.fini_array*))
+		PROVIDE_HIDDEN(__fini_array_end = .);
+	} >ROM
+
 	.rodata : 
 	{
 		. = ALIGN(4);
